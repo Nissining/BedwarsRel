@@ -30,7 +30,6 @@ public class TNTSheepListener implements Listener {
       register.registerEntities(
           BedwarsRel.getInstance().getIntConfig("specials.tntsheep.entity-id", 91));
     } catch (Exception e) {
-      BedwarsRel.getInstance().getBugsnag().notify(e);
       e.printStackTrace();
     }
   }

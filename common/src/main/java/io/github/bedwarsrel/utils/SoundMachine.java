@@ -15,7 +15,6 @@ public class SoundMachine {
         finalSound = Sound.valueOf(v19);
       }
     } catch (Exception ex) {
-      BedwarsRel.getInstance().getBugsnag().notify(ex);
       // just compatibility
     }
 

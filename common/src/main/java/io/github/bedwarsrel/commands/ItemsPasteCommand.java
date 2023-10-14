@@ -6,7 +6,6 @@ import io.github.bedwarsrel.utils.HastebinUtility;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -61,7 +60,7 @@ public class ItemsPasteCommand extends BaseCommand implements ICommand {
 
                   String link = HastebinUtility.upload(b.toString());
                   sender.sendMessage(ChatWriter
-                      .pluginMessage(ChatColor.GREEN + "Success! Items pasted on " + link));
+                      .pluginMessage("Success! Items pasted on " + link));
                 } catch (IOException e) {
                   e.printStackTrace();
                 }

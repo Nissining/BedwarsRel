@@ -77,7 +77,6 @@ public class AddTeamJoinCommand extends BaseCommand {
 
           runnablePlayer.removeMetadata("bw-addteamjoin", BedwarsRel.getInstance());
         } catch (Exception ex) {
-          BedwarsRel.getInstance().getBugsnag().notify(ex);
           // just ignore
         }
       }

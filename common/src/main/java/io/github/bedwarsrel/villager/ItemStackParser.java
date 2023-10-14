@@ -60,7 +60,6 @@ public class ItemStackParser {
         amount = Integer.parseInt(this.linkedSection.get("amount").toString());
       }
     } catch (Exception ex) {
-      BedwarsRel.getInstance().getBugsnag().notify(ex);
       amount = 1;
     }
 
@@ -122,7 +121,6 @@ public class ItemStackParser {
       return this.finalStack;
 
     } catch (Exception ex) {
-      BedwarsRel.getInstance().getBugsnag().notify(ex);
       ex.printStackTrace();
     }
 

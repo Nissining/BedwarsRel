@@ -21,11 +21,17 @@ public class SaveGameCommand extends BaseCommand implements ICommand {
       return false;
     }
 
-    Game game = this.getPlugin().getGameManager().getGame(args.get(0));
+    if (!this.getPlugin().setupGameName.containsKey(sender.getName())) {
+      sender.sendMessage("请输入 /bw addgame 添加房间后再试!");
+      return false;
+    }
+    String gameName = this.getPlugin().setupGameName.get(sender.getName());
+    Game game = this.getPlugin().getGameManager().getGame(gameName);
+
     if (game == null) {
       sender.sendMessage(ChatWriter.pluginMessage(ChatColor.RED
           + BedwarsRel
-          ._l(sender, "errors.gamenotfound", ImmutableMap.of("game", args.get(0).toString()))));
+          ._l(sender, "errors.gamenotfound", ImmutableMap.of("game", gameName))));
       return false;
     }
 

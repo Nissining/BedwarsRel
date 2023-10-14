@@ -29,13 +29,18 @@ public class SetSpawnerCommand extends BaseCommand {
 
     Player player = (Player) sender;
     ArrayList<String> arguments = new ArrayList<String>(Arrays.asList(this.getResources()));
-    String material = args.get(1).toString().toLowerCase();
-    Game game = this.getPlugin().getGameManager().getGame(args.get(0));
+    String material = args.get(0).toString().toLowerCase();
 
+    if (!this.getPlugin().setupGameName.containsKey(sender.getName())) {
+      sender.sendMessage("请输入 /bw addgame 添加房间后再试!");
+      return false;
+    }
+    String gameName = this.getPlugin().setupGameName.get(sender.getName());
+    Game game = this.getPlugin().getGameManager().getGame(gameName);
     if (game == null) {
       player.sendMessage(ChatWriter.pluginMessage(ChatColor.RED
           + BedwarsRel
-          ._l(player, "errors.gamenotfound", ImmutableMap.of("game", args.get(0).toString()))));
+          ._l(player, "errors.gamenotfound", ImmutableMap.of("game", gameName))));
       return false;
     }
 
@@ -65,7 +70,7 @@ public class SetSpawnerCommand extends BaseCommand {
 
   @Override
   public String[] getArguments() {
-    return new String[]{"game", "ressource"};
+    return new String[]{"ressource"};
   }
 
   @Override
